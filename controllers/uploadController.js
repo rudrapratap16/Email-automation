@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 const User = require("../models/user.js")
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 const XLSX = require("xlsx")
 
 require("dotenv").config();

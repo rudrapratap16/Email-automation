@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Content</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1b1e2a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-group label {
+      color: #adb5bd;
+    }
+    .btn-teal {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+      color: #ffffff;
+      width: 150px;
+    }
+    .btn-teal:hover {
+      background-color: #45a049;
+      border-color: #45a049;
+    }
+    .email-textarea {
+      background-color: #f8f9fa; /* Whitish background color */
+      white-space: pre-wrap;
+      border: none;
+      color: #343a40; /* Default text color */
+      resize: none;
+    }
+    .email-textarea::placeholder {
+      color: #6c757d; /* Placeholder text color */
+    }
+    .instruction {
+      font-size: 14px;
+    }
+    .navbar {
+      background-color: #1b1e2a;
+      border-bottom: 2px solid #20c997;
+    }
+    .navbar-brand, .nav-link {
+      color: #20c997 !important;
+    }
+    .navbar-brand:hover, .nav-link:hover {
+      color: #38d9a9 !important;
+    }
+    .navbar-toggler {
+      border-color: #20c997;
+    }
+    .dropdown-menu {
+      background-color: #282c34;
+      border: none;
+      min-width: 10rem; /* Ensures the dropdown menu isn't too wide */
+      text-align: center; /* Centers the dropdown items */
+      left: auto;
+      right: 0; /* Aligns the dropdown to the right */
+    }
+    .dropdown-item {
+      color: #20c997 !important;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      background-color: #3a3f4b !important;
+    }
+    .modal-content {
+      background-color: #1b1e2a;
+      color: #ffffff;
+    }
+    .modal-header, .modal-footer {
+      border: none;
+    }
+    .btn-cancel {
+      background-color: #808080;
+      border-color: #808080;
+      color: #ffffff;
+      width: 120px;
+    }
+    .thing{
+      margin-top:2rem;
+      margin-left:3.8rem;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Email Automation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aboutUs">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/upload/modify/<%=id%>/patch">Update Info</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal">Delete Profile</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1>Email Content</h1>
+      <p class="lead">Compose your email subject and message</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <small class="form-text text-muted instruction">➜ Use $ followed by the column name (e.g., $B, $C) to substitute the value at that position.</small>
+      </div>
+    </div>
+
+    
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="exampleTextarea">Example</label>
+          <textarea class="form-control email-textarea" id="exampleTextarea" rows="9" readonly>(Here Column B in Excel sheet contains the Names of people and Column C and D contains Marks)
+
+Dear $B, 
+Your marks1 are $C and marks2 are $D.
+Good Luck.
+
+Best regards,
+Teacher Name</textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card thing" style="width: 28rem;">
+          <img src="/images/example2.png" class="card-img-top" alt="Example excel sheet">
+        </div>
+      </div>
+      
+      <div class="col-md-12">
+        <form method="post" action="/upload/<%=id%>/data">
+        <div class="form-group">
+          <label for="subjectTextarea">Email Subject</label>
+          <textarea class="form-control email-textarea" id="subjectTextarea" rows="3" placeholder="Enter your email subject" name="subject"></textarea>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="messageTextarea">Email Message</label>
+          <textarea class="form-control email-textarea" id="messageTextarea" rows="7" placeholder="Enter your email message" name="message"></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-teal btn-block">Show Preview</button>
+      </div>
+    </div>
+  </form>
+  </div>
+
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete the Profile?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-teal" href="/upload/modify/<%=id%>/delete">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

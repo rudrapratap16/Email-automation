@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1b1e2a;
+      color: #ffffff;
+    }
+    .container {
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      color: #adb5bd;
+    }
+    .btn-teal {
+      background-color: #20c997;
+      border-color: #20c997;
+      color: #ffffff;
+      width: 120px;
+    }
+    .btn-teal:hover {
+      background-color: #38d9a9;
+      border-color: #38d9a9;
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <div class="container">
+    <div class="header">
+      <h1>Sign In</h1>
+      <p class="lead">Enter your username and app password</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form action="/signin" method="post">
+          <div class="form-group">
+            <label for="text">Username</label>
+            <input type="text" class="form-control" id="emailInput" placeholder="Enter your username" name="username">
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">App Password</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Enter your app password" name="password">
+          </div>
+          <button type="submit" class="btn btn-teal btn-block">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

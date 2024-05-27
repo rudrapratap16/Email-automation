@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Status</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1b1e2a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .card {
+      background-color: #343a40;
+      border: none;
+      color: #ffffff;
+    }
+    .btn-teal {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+      color: #ffffff;
+      width: 120px;
+    }
+    .btn-teal:hover {
+      background-color: #45a049;
+      border-color: #45a049;
+    }
+    .list-group-item {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+    .navbar {
+      background-color: #1b1e2a;
+      border-bottom: 2px solid #20c997;
+    }
+    .navbar-brand, .nav-link {
+      color: #20c997 !important;
+    }
+    .navbar-brand:hover, .nav-link:hover {
+      color: #38d9a9 !important;
+    }
+    .navbar-toggler {
+      border-color: #20c997;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2320c997' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .dropdown-menu {
+      background-color: #282c34;
+      border: none;
+      min-width: 10rem; /* Ensures the dropdown menu isn't too wide */
+      text-align: center; /* Centers the dropdown items */
+      left: auto;
+      right: 0; /* Aligns the dropdown to the right */
+    }
+    .dropdown-item {
+      color: #20c997 !important;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      background-color: #3a3f4b !important;
+    }
+    .modal-content {
+      background-color: #1b1e2a;
+      color: #ffffff;
+    }
+    .modal-header, .modal-footer {
+      border: none;
+    }
+    .btn-cancel {
+      background-color: #808080;
+      border-color: #808080;
+      color: #ffffff;
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Email Automation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/aboutUs">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/upload/modify/<%=id%>/patch">Update Info</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#confirmDeleteModal">Delete Profile</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <!-- <h1>Email Status</h1> -->
+      <p class="lead">DO NOW CLOSE THIS WINDOW</p>
+      <p>You can close this window when you yourself will receive a mail. Till then, Do not close this window as the mails are being sent from the server</p>
+      <p>After receiving mail, you can simply log out</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form method="get" action="/logout">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-teal btn-block">Log Out</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-left">
+        <p class="lead">Thank you for using our website!</p>
+        <p class="lead">Make Sure to log out :)</p>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete the Profile?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-teal" href="/upload/modify/<%=id%>/delete">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

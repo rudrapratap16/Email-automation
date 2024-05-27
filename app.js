@@ -15,6 +15,7 @@ const passport = require("passport")
 const localStrategy = require("passport-local")
 const User = require("./models/user.js")
 const port = 8080
+const loginSigninController = require("./controllers/loginSigninController.js")
 
 const store = MongoStore.create({
     mongoUrl: MONGO_URL,
@@ -66,6 +67,8 @@ main().then((res)=>{
 async function main(){
     await mongoose.connect(MONGO_URL)
 }
+
+app.get("/", loginSigninController.homePage)
 
 app.use("/", loginSigninRouter)
 app.use("/upload", uploadRouter)
